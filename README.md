@@ -1,6 +1,6 @@
-# streamlit-dashboards
-Streamlit dashboard examples - Twitter cashtags, StockTwits, WSB, Charts, SQL Pattern Scanner
+# 东哥币圈扫描器
 
-## Tutorial Video
-
-https://www.youtube.com/watch?v=0ESc1bh3eIg
+*每次刷新，自动抓取币安期货数据，1小时，4小时，8小时，1天k线数据。
+*根据TTM指标，扫描每个币的上述每一个周期的数据，如满足条件，筛选出来。
+*针对每个币的上述每一个周期的数据，计算谐波形态，如符合条件，筛选出来。
+*查看BTC有关推文
