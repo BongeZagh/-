@@ -13,6 +13,7 @@ import dateutil
 from datetime import datetime, timedelta
 from functools import reduce
 from scipy.signal import argrelextrema
+import psycopg2, psycopg2.extras
 import plotly.graph_objects as go
 
 data_1h = collect_data(timeframe = '1h', limit = 1000)
@@ -164,15 +165,17 @@ fig_price_ch_1_down.update_layout(yaxis={'categoryorder': 'total descending'},
                                   showlegend=False)
 fig_price_ch_1_down.update_traces(texttemplate='%{text:.1%}', textposition='auto')
 
-
-
+st.markdown('''# **东哥币圈扫描器**
+一个实用的币圈行情扫描器.
+''')
 mn_time = pd.to_datetime(current_time)-timedelta(hours = 6)
 
 # exec(open("harmonic_detector.py").read())
 
 
 st.write(mn_time)
-st.markdown("#东哥币圈扫描器")
+st.header('TTM 挤压扫描器')
+
 left_column, right_column = st.columns(2)
 left_column.write('1小时TTM：')
 left_column.write(brk_out_1h)
@@ -186,6 +189,8 @@ left_column.write(brk_out_8h)
 right_column.write('24小时TTM：')
 right_column.write(brk_out_24h)
 
+st.header('谐波形态扫描器')
+
 left_column, right_column = st.columns(2)
 left_column.write('1小时谐波形态：')
 left_column.dataframe(harmonic_1h)
@@ -197,6 +202,8 @@ left_column.write('8小时谐波形态：')
 left_column.dataframe(harmonic_8h)
 right_column.write('24小时谐波形态：')
 right_column.dataframe(harmonic_24h)
+
+st.header('币圈行情动态')
 
 left_column, right_column = st.columns(2)
 left_column.plotly_chart(fig_price_ch_24_up, use_container_width=True)
